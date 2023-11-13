@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deng Xiaoping 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 19pt;
+        }
+        .toggle {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .toggle-work, .toggle-interests  {
+            color: red;
+        }
+        .toggle-travels, .toggle-goal, .toggle-dengxiaoping2, .toggle-contact {
+            color: black;
+        }
+        .content {
+            display: none;
+            margin-top: 10px;
+            padding-left: 25px; /* Move content to the right */
+        }
+        #work, #interests {
+            color: red;
+            font-size: 13pt;
+        }
+        #travels, #goal, #dengxiaoping2, #contact {
+            color: black;
+            font-size: 13pt;
+        }
+        a {
+            color: inherit; /* Keep link color consistent with parent element */
+            text-decoration: none; /* Optional: removes the underline from links */
+        }
+        a:hover {
+            text-decoration: underline; /* Optional: underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <p><span class="toggle toggle-dengxiaoping2" onclick="toggleContent('dengxiaoping2')">Deng Xiaoping 2</span></p>
+    <div id="dengxiaoping2" class="content">
+        <p>I enjoy the imperfect world, and work to better it. I help people that make incredible technology share it with the world. If this is something you need help with, contact me.</p>
+    </div>
+
+    <p><span class="toggle toggle-work" onclick="toggleContent('work')">Work</span></p>
+    <div id="work" class="content">
+        <p>‣ <a href="https://www.x.com/Blimp_DAO">BlimpDAO</a> - Director of Operations [Current]</p>
+        <p>‣ <a href="https://assembly.urbit.org/schedule/assembly">Urbit Assembly 2023</a> - Master of Ceremony</p>
+        <p>‣ <a href="https://statesdao.club">Code States/StatesDAO</a> - Head of Community [March - June, 2022]</p>
+        <p>‣ <a href="https://twitter.com/pfp_plus">pfp+</a>  Creator [2022]</p>
+    </div>
+
+    <p><span class="toggle toggle-travels" onclick="toggleContent('travels')">Travels</span></p>
+    <div id="travels" class="content">
+        <p>‣ El Salvador</p>
+        <p>‣ Europe</p>
+    </div>
+
+    <p><span class="toggle toggle-interests" onclick="toggleContent('interests')">Interests</span></p>
+    <div id="interests" class="content">
+        <p>‣ <a href="https://urbit.org">Urbit</a>, Governance, Technology, <a href="https://are.na/deng-two/channels">Aesthetics</a>, <a href="https://www.airship-association.org/">Airships</a></p>
+        <p>‣ Kino Films; Sorcerer (1977), Playtime, Cars, ...</p>
+        <p>‣ The Adventures of Tintin</p>
+        <p>‣ The <a href="https://www.1101.com/mother_project/about.html">MOTHER</a> Series</p>
+        <p>‣ Game and Watch</p>
+    </div>
+<!--
+    <p><span class="toggle toggle-goal" onclick="toggleContent('goal')">Goal</span></p>
+    <div id="goal" class="content">
+        <p>‣ ...</p>
+    </div>
+-->
+
+    <p><span class="toggle toggle-contact" onclick="toggleContent('contact')">Contact</span></p>
+    <div id="contact" class="content">
+        <p>Urbit: <a href="http://join.tlon.io/dm-soches-pilled">~soches-pilled</a></p>
+        <p>Twitter: <a href="https://x.com/sochespilled">@sochespilled</a></p>
+        <!-- <p>Github: @dengpilled</p> -->
+        <!-- <p>Email: cog300@protonmail.com</p> -->
+    </div>
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
