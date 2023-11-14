@@ -39,6 +39,12 @@
         a:hover {
             text-decoration: underline; /* Optional: underline on hover */
         }
+        .bottom-right-gif {
+            position: fixed; /* Fixed position */
+            bottom: 0; /* Align to bottom */
+            right: 0; /* Align to right */
+            z-index: 1000; /* Ensure it's on top of other elements */
+        }
     </style>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -103,6 +109,8 @@
         <!-- <p>Github: @dengpilled</p> -->
         <!-- <p>Email: cog300@protonmail.com</p> -->
     </div>
+
+    <img src="https://64.media.tumblr.com/7a4aaad54a178c75decdea995f35ec79/tumblr_mm3198PCP01rfjowdo1_500.gif" alt="Animated Image" class="bottom-right-gif">
 
     <script>
         function toggleContent(id) {
