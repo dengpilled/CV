@@ -38,11 +38,14 @@
             font-size: 13pt;
         }
         a {
-            color: inherit; /* Keep link color consistent with parent element */
-            text-decoration: none; /* Optional: removes the underline from links */
+        color: inherit; /* Maintain the current text color */
+        text-decoration: underline; /* Add underline to all links */
+        }
+        a:visited {
+        color: inherit; /* Prevent color change for visited links */
         }
         a:hover {
-            text-decoration: underline; /* Optional: underline on hover */
+            font-weight: bold; /* Optional: underline on hover */
         }
         .bottom-right-gif {
             position: fixed;
@@ -52,7 +55,7 @@
             z-index: 1000;
             width: 200px; /* Adjust the width as needed */
             height: auto; /* This will maintain the aspect ratio */
-    }
+         }
 </style>
 
     </style>
@@ -102,7 +105,7 @@
 
     <p><span class="toggle toggle-interests" onclick="toggleContent('interests')">♥ Interests</span></p>
     <div id="interests" class="content">
-        <p>⛃ <a href="https://urbit.org" target="_blank">Urbit</a>, Governance, Skiing, Technology, <a href="https://are.na/deng-two/channels" target="_blank">Aesthetics</a>, <a href="https://www.airship-association.org/" target="_blank">Airships</a></p>
+        <p>⛃ <a href="https://urbit.org" target="_blank">Urbit</a>, <a href="https://palestrasociety.com" target="_blank">Governance</a>, Skiing, Technology, <a href="https://are.na/deng-two/channels" target="_blank">Aesthetics</a>, <a href="https://www.airship-association.org/" target="_blank">Airships</a></p>
         <p>⛃ Kino Films; Playtime (1967), Sorcerer (1977), Cars (2006), The Adventures of Tintin (2011)</p>
         <p>⛃ The <a href="https://www.1101.com/mother_project/about.html" target="_blank">MOTHER</a> Series</p>
         <p>⛃ Game and Watch</p>
