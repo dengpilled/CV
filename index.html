@@ -16,7 +16,7 @@
         .toggle-work, .toggle-interests  {
             color: red;
         }
-        .toggle-travels, .toggle-goal, .toggle-dengxiaoping2, .toggle-contact {
+        .toggle-writing, .toggle-goal, .toggle-dengxiaoping2, .toggle-contact {
             color: black;
         }
         .content {
@@ -28,7 +28,7 @@
             color: red;
             font-size: 13pt;
         }
-        #travels, #goal, #dengxiaoping2, #contact {
+        #writing, #goal, #dengxiaoping2, #contact {
             color: black;
             font-size: 13pt;
         }
@@ -56,11 +56,20 @@
         bottom: 10px; /* Position at the bottom right, under the GIF */
         right: 40px; /* Adjust as needed */
         z-index: 999; /* Below the GIF */
-}
+        }
+        button.toggle {
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 17pt;
+            cursor: pointer;
+            text-decoration: underline;
+            color: black;
+        }
 </style>
 
-    </style>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -96,25 +105,18 @@
         <p>⛃ <a href="https://twitter.com/pfp_plus" target="_blank">pfp+</a>  Creator [2022]</p>
     </div>
 
-    <p><span class="toggle toggle-travels" onclick="toggleContent('travels')">♠ Travels</span></p>
-    <div id="travels" class="content">
-        <p>⛃ El Salvador 5★</p>
-        <p>⛃ Europe 4★</p>
+    <p><span class="toggle toggle-writing" onclick="toggleContent('writing')">♠ Writing</span></p>
+    <div id="writing" class="content">
+        <p>⛃ Coming soon...</p>
     </div>
 
     <p><span class="toggle toggle-interests" onclick="toggleContent('interests')">♥ Interests</span></p>
     <div id="interests" class="content">
-        <p>⛃ <a href="https://urbit.org" target="_blank">Urbit</a>, Governance, Skiing, Technology, <a href="https://are.na/deng-two/channels" target="_blank">Aesthetics</a>, <a href="https://www.airship-association.org/" target="_blank">Airships</a></p>
+        <p>⛃ <a href="https://urbit.org" target="_blank">Urbit</a>, Governance, Skiing, Technology, <a href="https://are.na/deng-two/channels" target="_blank">Aesthetics</a>, Airships</p>
         <p>⛃ Films; Playtime (1967), Sorcerer (1977), Cars (2006), The Adventures of Tintin (2011)</p>
         <p>⛃ The <a href="https://www.1101.com/mother_project/about.html" target="_blank">MOTHER</a> Series</p>
         <p>⛃ Game & Watch</p>
     </div>
-<!--
-    <p><span class="toggle toggle-goal" onclick="toggleContent('goal')">Goal</span></p>
-    <div id="goal" class="content">
-        <p>⛃ ...</p>
-    </div>
--->
 
     <p><span class="toggle toggle-contact" onclick="toggleContent('contact')">♣ Contact</span></p>
     <div id="contact" class="content">
@@ -124,18 +126,31 @@
         <p>⛃ Email: gate@palestrasociety.com</p>
     </div>
 
-    <!--- <img src="https://64.media.tumblr.com/7a4aaad54a178c75decdea995f35ec79/tumblr_mm3198PCP01rfjowdo1_500.gif" alt="Animated Image" class="bottom-right-gif"> ---!>
+    <p><button class="toggle" onclick="toggleAllContent()">Expand All</button></p>
 
-    <script>
-        function toggleContent(id) {
-            var content = document.getElementById(id);
+<script>
+    function toggleContent(id) {
+        var content = document.getElementById(id);
             if (content.style.display === "block") {
                 content.style.display = "none";
             } else {
                 content.style.display = "block";
             }
-        }
-    </script>
+    }
+
+    function toggleAllContent() {
+        var sections = ['dengxiaoping2', 'work', 'writing', 'interests', 'contact']; // Add IDs of all sections you want to toggle
+        sections.forEach(function(sectionId) {
+            var content = document.getElementById(sectionId);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+    
 
 </body>
 </body>
