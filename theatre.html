@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Theatre</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure the html and body span the full height of the viewport */
+            font-family: Arial, sans-serif;
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            font-size: 16pt;
+            justify-content: center; /* Center content vertically */
+            align-items: center;
+            text-align: center; /* Center text */
+            min-height: calc(100vh - 40px); /* Adjust the height calculation if necessary */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .movie-selector-container {
+            width: 70%;
+            max-width: 640px;
+            margin-bottom: 10px;
+        }
+        .movie-selector {
+            width: 100%;
+            font-size: 17pt;
+            cursor: pointer;
+            color: red;
+        }
+        #moviePlayer {
+            width: 70%;
+            max-width: 640px;
+            margin-top: 0;
+        }
+        iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+        }
+        .coming-soon {
+            position: fixed; /* Fixed positioning to make it always visible */
+            bottom: 10px; /* Position from the bottom of the viewport */
+            right: 20px; /* Position from the right of the viewport */
+            font-size: 14pt;
+            font-style: italic;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <div class="movie-selector-container">
+        <label for="movieSelection">Choose a Film:</label>
+        <select id="movieSelection" class="movie-selector" onchange="changeMovie()">
+            <option value="https://archive.org/embed/The_Cabinet_of_Dr._Caligari_Werner_Krauss_1919">The Cabinet of Dr. Caligari (1919)</option>
+            <option value="https://archive.org/embed/12AngryMen1957">12 Angry Men (1957)</option>
+            <option value="https://www.youtube.com/embed/d8baw7Rb-9k" selected>Playtime (1967)</option>
+        </select>
+    </div>
+
+    <div id="moviePlayer">
+        <iframe id="movieIframe" src="https://www.youtube.com/embed/d8baw7Rb-9k" title="Selected Movie" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Text always visible at the bottom right -->
+<div class="coming-soon">more films coming soon...</div>
+
+<script>
+    function changeMovie() {
+        var movieSelection = document.getElementById("movieSelection").value;
+        document.getElementById("movieIframe").src = movieSelection;
+    }
+</script>
+
+</body>
+</html>
+
