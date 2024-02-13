@@ -1,8 +1,9 @@
 {
     "rewrites": [
-      { "source": "https://deng.poker/index.html", "destination": "https://deng.poker/" },
-      { "source": "/theatre.html", "destination": "/theatre" }
-      { "source": "/404.html", "destination": "/404" }
+      { "source": "/index", "destination": "/index.html" },
+      { "source": "/theatre", "destination": "/theatre.html" }
+      ,{ "source": "/404", "destination": "/404.html" }
+
     ]
   }
   
