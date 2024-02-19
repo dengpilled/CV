@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>The Theatre</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%; /* Ensure the html and body span the full height of the viewport */
-            font-family: Arial, sans-serif;
+            font-family: 'Nintendo', fallback, sans-serif;
         }
         .content-wrapper {
             display: flex;
@@ -32,6 +33,7 @@
             font-size: 17pt;
             cursor: pointer;
             color: red;
+            font-family: 'Nintendo', fallback, sans-serif; /* Ensure custom font is applied */
         }
         #moviePlayer {
             width: 70%;
@@ -60,13 +62,10 @@
         <label for="movieSelection">Choose a Film:</label>
         <select id="movieSelection" class="movie-selector" onchange="changeMovie()">
             <option value="https://archive.org/embed/The_Cabinet_of_Dr._Caligari_Werner_Krauss_1919">The Cabinet of Dr. Caligari (1919)</option>
-            <!-- <option value="https://ok.ru/videoembed/3222842706669">The Big Day (1949)</option> -->
             <option value="https://www.youtube.com/embed/SnJv5wi8yIE?si=v5BFeDOQw5W1Tkr2">Monsieur Hulot's Holiday (1953)</option>
             <option value="https://ok.ru/videoembed/3260825995804">Mon Oncle (1958)</option>
-            <!-- <option value="https://archive.org/embed/12AngryMen1957">12 Angry Men (1957)</option> -->
             <option value="https://ok.ru/videoembed/4326182357710">Yojimbo (1961)</option>
             <option value="https://ok.ru/videoembed/914086496815">Lawrence of Arabia (1962)</option>
-            <!-- <option value="https://www.youtube.com/embed/BJ_njww9SOQ?si=wP1YUBV2sY3ydrbp">Charade (1963)</option>  -->
             <option value="https://www.youtube.com/embed/d8baw7Rb-9k" selected>Playtime (1967)</option>
             <option value="https://www.dailymotion.com/embed/video/x8q2gdh">Planet of The Apes (1968)</option>
             <option value="https://www.youtube.com/embed/WsBPokgj_qE?si=WEhTDLwcKo9nSYV7">The Colour of Pomegranates (1969)</option>
@@ -78,14 +77,8 @@
             <option value="https://ok.ru/videoembed/242368711236">Eyes Wide Shut (1999)</option>
             <option value="https://ok.ru/videoembed/934337972937">Donnie Darko (2001)</option>
             <option value="https://ok.ru/videoembed/3073645742767">Manchester By The Sea (2016)</option>
-
-            
-            <!--- Add more movies with this code
-             
-            <option value=""> ()</option>
-            
-            -->
-            
+            <!-- <option value="https://www.youtube.com/embed/BJ_njww9SOQ?si=wP1YUBV2sY3ydrbp">Charade (1963)</option>  -->
+            <!-- <option value="https://archive.org/embed/12AngryMen1957">12 Angry Men (1957)</option> -->
         </select>
     </div>
 

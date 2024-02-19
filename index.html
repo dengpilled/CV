@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="stylesheet.css">
     <style>
         body {
-            font-family: 'Nintendo';
+            font-family: 'Nintendo', fallback, sans-serif;
             line-height: 1.6;
             padding: 20px;
             font-size: 17pt;
@@ -147,9 +147,8 @@
     </div>
     
     <script>
-        
-        let totalEmojisGenerated = 0; // Initialize outside the click event listener
-        /* document.addEventListener('click', function(e) {
+        /*let totalEmojisGenerated = 0; // Initialize outside the click event listener
+        document.addEventListener('click', function(e) {
             const allEmojis = ['🃏', '🎰', '🎲', '🥃', '🌎', '🌍', '🌏', '🍺', '🍸', '🥂', '🍾', '💵', '🎩', '🌂', '📽️', '🎞️'];
             const numOfEmojis = Math.floor(Math.random() * 5) + 1;
             
@@ -200,6 +199,7 @@
             }
         });
         */
+        
         function toggleContent(id) {
             var content = document.getElementById(id);
             if (content.style.display === "block") {
