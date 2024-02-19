@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Deng Xiaoping 2</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Nintendo',Arial, sans-serif;
             line-height: 1.6;
             padding: 20px;
             font-size: 17pt;
@@ -33,11 +32,11 @@
             font-size: 13pt;
         }
         a {
-        color: inherit; /* Maintain the current text color */
-        text-decoration: underline; /* Add underline to all links */
+            color: inherit; /* Maintain the current text color */
+            text-decoration: underline; /* Add underline to all links */
         }
         a:visited {
-        color: inherit; /* Prevent color change for visited links */
+            color: inherit; /* Prevent color change for visited links */
         }
         a:hover {
             font-style: italic; /* Optional: underline on hover */
@@ -52,10 +51,10 @@
             height: auto; /* This will maintain the aspect ratio */
          }
          #counter-container {
-        position: fixed;
-        bottom: 10px; /* Position at the bottom right, under the GIF */
-        right: 40px; /* Adjust as needed */
-        z-index: 999; /* Below the GIF */
+            position: fixed;
+            bottom: 10px; /* Position at the bottom right, under the GIF */
+            right: 40px; /* Adjust as needed */
+            z-index: 999; /* Below the GIF */
         }
         button.toggle {
             background: none;
@@ -70,6 +69,13 @@
         .cv-text {
             font-size: 8.5pt; /* Smaller font size */
             vertical-align: bottom; /* Align with the title but higher */
+        }
+        .emoji {
+            position: fixed;
+            font-size: 30px; /* Emoji size */
+            pointer-events: none; /* Ensures they don't interfere with other interactions */
+            opacity: 0; /* Start invisible for animation */
+            transition: opacity 20s ease; /* Fade in effect */
         }
     </style>
 
@@ -92,7 +98,7 @@
     <meta property="twitter:description" content="Deng; Personal Info">
     <meta property="twitter:image" content="https://i.imgur.com/wd8Ly9y.png">
 
-
+    <link rel="stylesheet" href="path/to/stylesheet.css">
 </head>
 <body>
     <p><span class="toggle toggle-dengxiaoping2" onclick="toggleContent('dengxiaoping2')">Deng Xiaoping 2</span></p><div id="dengxiaoping2" class="content">
@@ -134,11 +140,66 @@
 
     <p><button id="toggleButton" class="toggle" onclick="toggleAllContent()">Expand All</button></p>
 
+    <div id="emojiCounter" style="position: fixed; bottom: 0; left: 0; font-size: 10px;">😀: 0</div>
+
     <div style="position: fixed; bottom: 10px; right: 20px; z-index: 1001;">
         <a href="theatre" style="color: white; font-size: 30pt;">📽</a>
     </div>
     
     <script>
+                let totalEmojisGenerated = 0; // Initialize outside the click event listener
+
+        document.addEventListener('click', function(e) {
+            const allEmojis = ['🃏', '🎰', '🎲', '🥃', '🌎', '🌍', '🌏', '🍺', '🍸', '🥂', '🍾', '💵', '🎩', '🌂', '📽️', '🎞️'];
+            const numOfEmojis = Math.floor(Math.random() * 5) + 1;
+            
+            totalEmojisGenerated += numOfEmojis; // Update total emojis generated
+            document.getElementById('emojiCounter').textContent = `😀: ${totalEmojisGenerated}`; // Update counter display
+        
+            for (let i = 0; i < numOfEmojis; i++) {
+                const emoji = allEmojis[Math.floor(Math.random() * allEmojis.length)];
+                const span = document.createElement('span');
+                span.textContent = emoji;
+                span.classList.add('emoji');
+                document.body.appendChild(span);
+        
+                span.style.position = 'fixed';
+                span.style.left = `${e.clientX}px`;
+                span.style.top = `${e.clientY}px`;
+                span.style.opacity = '1';
+        
+                // Increase the velocity for a more forceful jump
+                const velocity = Math.random() * 30 + 50; // Increased velocity
+        
+                // Adjust angle to ensure it's always upwards
+                const angle = Math.random() < 0.5 ? 
+                    (Math.PI / 4) + (Math.random() * (Math.PI / 4)) : // Upper-left quadrant
+                    (Math.PI * 1.5) - (Math.random() * (Math.PI / 4)); // Upper-right quadrant
+        
+                let endX = e.clientX + (velocity * Math.cos(angle));
+                let endY = e.clientY - (velocity * Math.sin(angle));
+        
+                // Apply a more immediate transition for the jump
+                setTimeout(() => {
+                    span.style.transition = `left 0.4s ease-out, top 0.4s ease-out, opacity 0.4s`;
+                    span.style.left = `${endX}px`;
+                    span.style.top = `${endY}px`;
+                }, i * 100);
+        
+                // Shorten the hover time and start the fall sooner
+                setTimeout(() => {
+                    span.style.transition = `top 0.5s ease-in, opacity 0.5s`;
+                    span.style.top = `${window.innerHeight + 50}px`; // Move down beyond the viewport
+                    span.style.opacity = '0';
+                }, 400 + i * 100); // Reduce delay before fall
+        
+                // Cleanup after animation
+                setTimeout(() => {
+                    span.remove();
+                }, 900 + i * 100); // Adjusted cleanup timing
+            }
+        });
+        
         function toggleContent(id) {
             var content = document.getElementById(id);
             if (content.style.display === "block") {
@@ -149,22 +210,15 @@
         }
         
         function toggleAllContent() {
-            var sections = ['dengxiaoping2', 'work', 'writing', 'interests', 'contact']; // Add IDs of all sections you want to toggle
-            var isExpanded = document.getElementById('toggleButton').innerHTML === 'Collapse All';
-            sections.forEach(function(sectionId) {
+            var sections = ['dengxiaoping2', 'work', 'writing', 'interests', 'contact'];
+            var toggleButton = document.getElementById('toggleButton');
+            var isExpanded = toggleButton.innerHTML === 'Collapse All';
+            sections.forEach(sectionId => {
                 var content = document.getElementById(sectionId);
-                if (isExpanded) {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
+                content.style.display = isExpanded ? 'none' : 'block';
             });
-            document.getElementById('toggleButton').innerHTML = isExpanded ? 'Expand All' : 'Collapse All';
+            toggleButton.innerHTML = isExpanded ? 'Expand All' : 'Collapse All';
         }
         </script>
-        
-    
-
-</body>
 </body>
 </html>
