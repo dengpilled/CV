@@ -9,17 +9,17 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensure the html and body span the full height of the viewport */
+            height: 100%;
             font-family: 'Nintendo', fallback, sans-serif;
         }
         .content-wrapper {
             display: flex;
             flex-direction: column;
             font-size: 16pt;
-            justify-content: center; /* Center content vertically */
+            justify-content: center;
             align-items: center;
-            text-align: center; /* Center text */
-            min-height: calc(100vh - 40px); /* Adjust the height calculation if necessary */
+            text-align: center;
+            min-height: calc(100vh - 40px);
             padding: 20px;
             box-sizing: border-box;
         }
@@ -33,7 +33,7 @@
             font-size: 17pt;
             cursor: pointer;
             color: red;
-            font-family: 'Nintendo', fallback, sans-serif; /* Ensure custom font is applied */
+            font-family: 'Nintendo', fallback, sans-serif;
         }
         #moviePlayer {
             width: 70%;
@@ -45,14 +45,73 @@
             height: 360px;
             border: none;
         }
-        .coming-soon {
-            position: fixed; /* Fixed positioning to make it always visible */
-            bottom: 18px; /* Position from the bottom of the viewport */
-            left: 20px; /* Position from the right of the viewport */
-            font-size: 12pt;
-            font-style: italic;
-            color: black;
+
+        /* Button styles */
+        .button {
+            position: relative;
+            padding: 0 8px 12px;
+            min-width: 10em;
+            margin-top: 20px; /* Adjust as needed */
         }
+        .button-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    padding: 8px 16px;
+    transform: translateY(0);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.25);
+    transition-property: transform;
+    transition-duration: 0.2s;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image: radial-gradient(#cd3f64, #9d3656);
+    border-radius: 10px; /* Rounded edges with a radius of 10px */
+}
+        .button:active .button-top {
+            transform: translateY(6px);
+        }
+        .button-bottom {
+            position: absolute;
+            z-index: -1;
+            bottom: 4px;
+            left: 4px;
+            border-radius: 8px/16px 16px 8px 8px;
+            padding-top: 6px;
+            width: calc(100% - 8px);
+            height: calc(100% - 10px);
+            box-sizing: content-box;
+            background-color: #803;
+            background-image: radial-gradient(4px 8px at 4px calc(100% - 8px), rgba(255, 255, 255, 0.25), transparent), radial-gradient(4px 8px at calc(100% - 4px) calc(100% - 8px), rgba(255, 255, 255, 0.25), transparent), radial-gradient(16px at -4px 0, white, transparent), radial-gradient(16px at calc(100% + 4px) 0, white, transparent);
+            box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), inset 0px -1px 3px 3px rgba(0, 0, 0, 0.4);
+        }
+        .button:active .button-bottom {
+            border-radius: 10px 10px 8px 8px/8px;
+            padding-top: 0;
+        }
+        .button-base {
+            position: absolute;
+            z-index: -2;
+            top: 4px;
+            left: 0;
+            border-radius: 12px;
+            width: 100%;
+            height: calc(100% - 4px);
+            background-color: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.75), inset 0 2px 2px rgba(0, 0, 0, 0.25);
+        }
+        .dark-mode {
+            background-color: #000; /* Dark background */
+            color: #fff; /* Light text */
+        }
+
+/* You might want to adjust the iframe or other elements specifically in dark mode */
+.dark-mode iframe {
+    filter: brightness(0.8);
+}
     </style>
 </head>
 <body>
@@ -84,25 +143,50 @@
 
     <div id="moviePlayer">
         <iframe id="movieIframe" src="https://www.youtube.com/embed/d8baw7Rb-9k" title="Selected Movie" allowfullscreen></iframe>
-    </div>
-</div>
+        <div class="button" onclick="toggleLights()">
+            <div class="button-top" id="lightsButton">Lights Off</div>
+            <div class="button-bottom"></div>
+            <div class="button-base"></div>
+        </div>
+        
 
-<!-- 
-    Text always visible at the bottom right 
-<div class="coming-soon">more coming soon...</div>
--->
-
-<div style="position: fixed; bottom: 10px; right: 20px; z-index: 1001;">
-    <a href="index" style="color: white; font-size: 30pt;">🏠</a>
-</div>
-
-<script>
-    function changeMovie() {
-        var movieSelection = document.getElementById("movieSelection").value;
-        document.getElementById("movieIframe").src = movieSelection;
-    }
-</script>
-
-</body>
-</html>
-
+        <script>
+            function toggleLights() {
+                document.body.classList.toggle('dark-mode');
+                var lightsButton = document.getElementById('lightsButton');
+                if (document.body.classList.contains('dark-mode')) {
+                    lightsButton.textContent = 'Lights On';
+                    lightsButton.style.color = 'black';
+                } else {
+                    lightsButton.textContent = 'Lights Off';
+                    lightsButton.style.color = 'white'; // Change as needed
+                }
+            }
+            
+            function changeMovie() {
+                var movieSelection = document.getElementById("movieSelection").value;
+                document.getElementById("movieIframe").src = movieSelection;
+            }
+            </script>
+            
+            <style>
+                .dark-mode {
+                    background-color: #000;
+                    color: #fff;
+                }
+            
+                .dark-mode .movie-selector-container,
+                .dark-mode .movie-selector {
+                    background-color: #000000; /* Darker background for the selector */
+                    color: #424242; /* Light text for the selector */
+                }
+            
+                .dark-mode iframe {
+                    filter: brightness(0.8);
+                }
+            
+                /* Additional styles for button and other elements in dark mode */
+            </style>
+            
+            </body>
+            </html>
