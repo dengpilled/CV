@@ -5,7 +5,9 @@
       { "source": "/404", "destination": "/404.html" },
       { "source": "/mother", "destination": "/mother.html" },
       { "source": "/jubensha", "destination": "/jubensha.html" },
-      { "source": "/updates", "destination": "/updates.html" }
+      { "source": "/updates", "destination": "/updates.html" },
+      { "source": "/tintin", "destination": "/tintin.html" }
+
     ]
   }
   
